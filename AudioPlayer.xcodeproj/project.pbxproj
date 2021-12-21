@@ -13,6 +13,9 @@
 		FAD32E34277254720070FA79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E32277254720070FA79 /* Main.storyboard */; };
 		FAD32E36277254740070FA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E35277254740070FA79 /* Assets.xcassets */; };
 		FAD32E39277254740070FA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E37277254740070FA79 /* LaunchScreen.storyboard */; };
+		FAD32E43277257140070FA79 /* Welcome to Brixton.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E40277257140070FA79 /* Welcome to Brixton.mp3 */; };
+		FAD32E44277257140070FA79 /* Eгор Крид - Сhoppa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E41277257140070FA79 /* Eгор Крид - Сhoppa.mp3 */; };
+		FAD32E45277257140070FA79 /* Juice WRLD - From My Window.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E42277257140070FA79 /* Juice WRLD - From My Window.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		FAD32E35277254740070FA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAD32E38277254740070FA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAD32E3A277254740070FA79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD32E40277257140070FA79 /* Welcome to Brixton.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Welcome to Brixton.mp3"; sourceTree = SOURCE_ROOT; };
+		FAD32E41277257140070FA79 /* Eгор Крид - Сhoppa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Eгор Крид - Сhoppa.mp3"; sourceTree = SOURCE_ROOT; };
+		FAD32E42277257140070FA79 /* Juice WRLD - From My Window.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Juice WRLD - From My Window.mp3"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				FAD32E35277254740070FA79 /* Assets.xcassets */,
 				FAD32E37277254740070FA79 /* LaunchScreen.storyboard */,
 				FAD32E3A277254740070FA79 /* Info.plist */,
+				FAD32E41277257140070FA79 /* Eгор Крид - Сhoppa.mp3 */,
+				FAD32E42277257140070FA79 /* Juice WRLD - From My Window.mp3 */,
+				FAD32E40277257140070FA79 /* Welcome to Brixton.mp3 */,
 			);
 			path = AudioPlayer;
 			sourceTree = "<group>";
@@ -126,6 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAD32E39277254740070FA79 /* LaunchScreen.storyboard in Resources */,
+				FAD32E44277257140070FA79 /* Eгор Крид - Сhoppa.mp3 in Resources */,
+				FAD32E43277257140070FA79 /* Welcome to Brixton.mp3 in Resources */,
+				FAD32E45277257140070FA79 /* Juice WRLD - From My Window.mp3 in Resources */,
 				FAD32E36277254740070FA79 /* Assets.xcassets in Resources */,
 				FAD32E34277254720070FA79 /* Main.storyboard in Resources */,
 			);
