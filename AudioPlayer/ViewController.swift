@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     
     var num = 1
     
+    var playMusicMode = "Off"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,6 +116,7 @@ class ViewController: UIViewController {
         
         self.view.addSubview(backSongButton)
     
+        backSongButton.addTarget(self, action: #selector(backSong), for: .touchUpInside)
         
         // slider
         slider.frame = CGRect(x: 20,
@@ -128,14 +131,18 @@ class ViewController: UIViewController {
         slider.maximumTrackTintColor = .lightGray
         slider.thumbTintColor = .systemBlue
         
+        slider.addTarget(self, action: #selector(rewindSlider), for: .valueChanged)
+        
         //label
-        songLabel.frame = CGRect(x: 20,
-                                 y: 600,
-                                 width: 210,
+        songLabel.frame = CGRect(x: 0,
+                                 y: 0,
+                                 width: 400,
                                  height: 30)
+        songLabel.center = view.center
         view.addSubview(songLabel)
         songLabel.font = UIFont.systemFont(ofSize: 20)
-        songLabel.center = view.center
+        songLabel.textAlignment = .center
+        
         songLabel.text = traks[0]
     
         // slider
@@ -144,13 +151,12 @@ class ViewController: UIViewController {
                                     width: imageView.frame.size.width + 140,
                                     height: 10)
         view.addSubview(volumeSlider)
-        volumeSlider.minimumValue = 0
-        volumeSlider.maximumValue = 100
-        volumeSlider.value = 50
+        volumeSlider.maximumValue = Float(player.duration)
         volumeSlider.minimumTrackTintColor = .systemBlue
         volumeSlider.maximumTrackTintColor = .lightGray
         volumeSlider.thumbTintColor = .systemBlue
         
+        volumeSlider.addTarget(self, action: #selector(rewindVolume), for: .valueChanged)
         
     }
     
@@ -159,13 +165,15 @@ class ViewController: UIViewController {
     
     @objc func playMusic() {
         self.player.play()
+        playMusicMode = "On"
         num += 1
         if num % 2 == 0 {
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            
+            playMusicMode = "On"
         } else {
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             self.player.stop()
+            playMusicMode = "Off"
         }
     }
     
@@ -175,9 +183,36 @@ class ViewController: UIViewController {
             
         songLabel.text = traks[indexOfSong]
         setPlayer()
+        guard playMusicMode == "On" else { return }
         self.player.play()
         
+        
     }
+    @objc func backSong() {
+        indexOfSong -= 1
+        if indexOfSong == -1 {
+            indexOfSong = 0
+        }
+        print(indexOfSong)
+        if indexOfSong >= traks.count {
+            indexOfSong = traks.count - 2
+        }
+        songLabel.text = traks[indexOfSong]
+        setPlayer()
+        guard playMusicMode == "On" else { return }
+        self.player.play()
+        playMusicMode = "On"
+    }
+    
+    @objc func rewindSlider() {
+        self.player.volume = self.slider.value
+    }
+    
+    @objc func rewindVolume() {
+        self.player.currentTime = TimeInterval(volumeSlider.value)
+    }
+        
+    
     func setPlayer() {
     do {
             if indexOfSong != nil, let audioPath = Bundle.main.path(forResource: traks[indexOfSong], ofType: "mp3") {
