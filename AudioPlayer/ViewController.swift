@@ -66,6 +66,7 @@ class ViewController: UIViewController {
         self.view.addSubview(imageView)
         
         
+        
         // Buttons
         
         playButton.layer.cornerRadius = 7
@@ -118,20 +119,6 @@ class ViewController: UIViewController {
     
         backSongButton.addTarget(self, action: #selector(backSong), for: .touchUpInside)
         
-        // slider
-        slider.frame = CGRect(x: 20,
-                              y: 420,
-                              width: imageView.frame.size.width + 140,
-                              height: 10)
-        view.addSubview(slider)
-        slider.minimumValue = 0
-        slider.maximumValue = 100
-        slider.value = 50
-        slider.minimumTrackTintColor = .systemBlue
-        slider.maximumTrackTintColor = .lightGray
-        slider.thumbTintColor = .systemBlue
-        
-        slider.addTarget(self, action: #selector(rewindSlider), for: .valueChanged)
         
         //label
         songLabel.frame = CGRect(x: 0,
@@ -140,30 +127,47 @@ class ViewController: UIViewController {
                                  height: 30)
         songLabel.center = view.center
         view.addSubview(songLabel)
-        songLabel.font = UIFont.systemFont(ofSize: 20)
+        songLabel.font = UIFont.systemFont(ofSize: 24)
         songLabel.textAlignment = .center
+        songLabel.textColor = .white
         
         songLabel.text = traks[0]
-    
-        // slider
-        volumeSlider.frame = CGRect(x: 20,
+        
+        // slider - time tracker
+        slider.frame = CGRect(x: 40,
+                              y: 420,
+                              width: imageView.frame.size.width + 100,
+                              height: 10)
+        
+        slider.minimumValue = 0.0
+        slider.maximumValue = 100.0
+        slider.minimumTrackTintColor = .systemBlue
+        slider.maximumTrackTintColor = .lightGray
+        slider.thumbTintColor = .systemBlue
+        view.addSubview(slider)
+        slider.addTarget(self, action: #selector(rewindSlider), for: .valueChanged)
+        
+        // slider - volume
+        volumeSlider.frame = CGRect(x: 85,
                                     y: 800,
-                                    width: imageView.frame.size.width + 140,
+                                    width: imageView.frame.size.width,
                                     height: 10)
-        view.addSubview(volumeSlider)
-        volumeSlider.maximumValue = Float(player.duration)
+        
+        volumeSlider.maximumValue = 100.0
+        volumeSlider.minimumValue = 0.0
         volumeSlider.minimumTrackTintColor = .systemBlue
         volumeSlider.maximumTrackTintColor = .lightGray
         volumeSlider.thumbTintColor = .systemBlue
+        view.addSubview(volumeSlider)
         
-        volumeSlider.addTarget(self, action: #selector(rewindVolume), for: .valueChanged)
-        
+        volumeSlider.addTarget(self, action: #selector(editVolume), for: .valueChanged)
     }
     
     
     // MARK: - Methods
     
     @objc func playMusic() {
+        imageView.image = UIImage(named: String(indexOfSong))
         self.player.play()
         playMusicMode = "On"
         num += 1
@@ -183,7 +187,9 @@ class ViewController: UIViewController {
             
         songLabel.text = traks[indexOfSong]
         setPlayer()
+        imageView.image = UIImage(named: String(indexOfSong))
         guard playMusicMode == "On" else { return }
+        
         self.player.play()
         
         
@@ -199,25 +205,31 @@ class ViewController: UIViewController {
         }
         songLabel.text = traks[indexOfSong]
         setPlayer()
+        imageView.image = UIImage(named: String(indexOfSong))
         guard playMusicMode == "On" else { return }
+        
         self.player.play()
         playMusicMode = "On"
     }
     
     @objc func rewindSlider() {
-        self.player.volume = self.slider.value
+        
+        self.player.currentTime = TimeInterval(slider.value)
     }
     
-    @objc func rewindVolume() {
-        self.player.currentTime = TimeInterval(volumeSlider.value)
+    @objc func editVolume() {
+        
+        self.player.volume = 
     }
         
     
     func setPlayer() {
     do {
-            if indexOfSong != nil, let audioPath = Bundle.main.path(forResource: traks[indexOfSong], ofType: "mp3") {
+            if let audioPath = Bundle.main.path(forResource: traks[indexOfSong], ofType: "mp3") {
                 
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+                self.slider.maximumValue = Float(player.duration)
+                self.volumeSlider.maximumValue = Float(player.volume)
             }
         } catch {
             print("ERRoR")
