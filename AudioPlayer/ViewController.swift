@@ -66,7 +66,6 @@ class ViewController: UIViewController {
         self.view.addSubview(imageView)
         
         
-        
         // Buttons
         
         playButton.layer.cornerRadius = 7
@@ -219,7 +218,7 @@ class ViewController: UIViewController {
     
     @objc func editVolume() {
         
-        self.player.volume = 
+        self.player.volume = self.volumeSlider.value
     }
         
     
@@ -229,7 +228,7 @@ class ViewController: UIViewController {
                 
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 self.slider.maximumValue = Float(player.duration)
-                self.volumeSlider.maximumValue = Float(player.volume)
+                self.volumeSlider.maximumValue = Float(player.duration)
             }
         } catch {
             print("ERRoR")
