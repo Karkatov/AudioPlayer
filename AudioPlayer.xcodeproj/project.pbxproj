@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA1C0DDF277764A000380432 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C0DDE277764A000380432 /* ViewController.swift */; };
+		FA1C0DE127776DBB00380432 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C0DE027776DBB00380432 /* Music.swift */; };
 		FAD32E2D277254720070FA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD32E2C277254720070FA79 /* AppDelegate.swift */; };
 		FAD32E2F277254720070FA79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD32E2E277254720070FA79 /* SceneDelegate.swift */; };
-		FAD32E31277254720070FA79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD32E30277254720070FA79 /* ViewController.swift */; };
+		FAD32E31277254720070FA79 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD32E30277254720070FA79 /* SecondViewController.swift */; };
 		FAD32E34277254720070FA79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E32277254720070FA79 /* Main.storyboard */; };
 		FAD32E36277254740070FA79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E35277254740070FA79 /* Assets.xcassets */; };
 		FAD32E39277254740070FA79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD32E37277254740070FA79 /* LaunchScreen.storyboard */; };
@@ -19,10 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA1C0DDE277764A000380432 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA1C0DE027776DBB00380432 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		FAD32E29277254720070FA79 /* AudioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD32E2C277254720070FA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD32E2E277254720070FA79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAD32E30277254720070FA79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FAD32E30277254720070FA79 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FAD32E33277254720070FA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAD32E35277254740070FA79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAD32E38277254740070FA79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +50,7 @@
 		FAD32E20277254720070FA79 = {
 			isa = PBXGroup;
 			children = (
+				FA1C0DE027776DBB00380432 /* Music.swift */,
 				FAD32E2B277254720070FA79 /* AudioPlayer */,
 				FAD32E2A277254720070FA79 /* Products */,
 			);
@@ -64,7 +69,8 @@
 			children = (
 				FAD32E2C277254720070FA79 /* AppDelegate.swift */,
 				FAD32E2E277254720070FA79 /* SceneDelegate.swift */,
-				FAD32E30277254720070FA79 /* ViewController.swift */,
+				FA1C0DDE277764A000380432 /* ViewController.swift */,
+				FAD32E30277254720070FA79 /* SecondViewController.swift */,
 				FAD32E32277254720070FA79 /* Main.storyboard */,
 				FAD32E35277254740070FA79 /* Assets.xcassets */,
 				FAD32E37277254740070FA79 /* LaunchScreen.storyboard */,
@@ -150,8 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAD32E31277254720070FA79 /* ViewController.swift in Sources */,
+				FAD32E31277254720070FA79 /* SecondViewController.swift in Sources */,
 				FAD32E2D277254720070FA79 /* AppDelegate.swift in Sources */,
+				FA1C0DE127776DBB00380432 /* Music.swift in Sources */,
+				FA1C0DDF277764A000380432 /* ViewController.swift in Sources */,
 				FAD32E2F277254720070FA79 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
