@@ -10,7 +10,9 @@ import AVFoundation
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
     var player = AVAudioPlayer()
+    
     
     var imageView = UIImageView()
     
@@ -25,6 +27,7 @@ class SecondViewController: UIViewController {
     
     var volumeSlider = UISlider()
     
+    @IBOutlet weak var backButton: UIButton!
     let traks = ["Juice WRLD - From My Window",
                  "Eгор Крид - Сhoppa",
                  "Welcome to Brixton"]
@@ -32,6 +35,9 @@ class SecondViewController: UIViewController {
     var indexOfSong = 0
     
     var num = 1
+    
+    @IBOutlet weak var time: UILabel!
+    
     
     var playMusicMode = "Off"
     
@@ -49,6 +55,7 @@ class SecondViewController: UIViewController {
     
     func setProperties() {
         
+        backButton.imageView?.contentMode = .top
         // Image
         self.imageView.frame = CGRect(x: 90,
                                       y: 100,
@@ -68,6 +75,7 @@ class SecondViewController: UIViewController {
         imageView.layer.cornerRadius = 10
         
         self.view.addSubview(imageView)
+    
         
         
         // Buttons
@@ -90,7 +98,7 @@ class SecondViewController: UIViewController {
         
         
         
-//        nextSongButton =
+//      nextSongButton =
         nextSongButton.layer.cornerRadius = 7
         nextSongButton.backgroundColor = .lightGray
         
@@ -197,6 +205,7 @@ class SecondViewController: UIViewController {
         guard playMusicMode == "On" else { return }
         
         self.player.play()
+       
         
         
     }
@@ -225,25 +234,37 @@ class SecondViewController: UIViewController {
     
     @objc func editVolume() {
         
-        self.player.volume = self.volumeSlider.value
+        self.player.volume = self.volumeSlider.value / 10
     }
     
     
     func setPlayer() {
+        
     do {
             if let audioPath = Bundle.main.path(forResource: traks[indexOfSong], ofType: "mp3") {
                 imageView.image = UIImage(named: "\(indexOfSong)")
                 
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 self.slider.maximumValue = Float(player.duration)
-                self.volumeSlider.maximumValue = Float(player.duration)
                 
+                updateTimer()
             }
         } catch {
             print("ERRoR")
         }
         
     }
+    func updateTimer() {
+       slider.value = Float(player.currentTime)
+       var minutes = Int(player.currentTime / 60)
+       let seconds = player.currentTime - Double(minutes * 60)
+       var secodsString = seconds < 9.5 ? "0\(String(format: "%.0f", seconds))" : "\(String(format: "%.0f", seconds))"
+       if secodsString == "60" {
+           secodsString = "00"
+           minutes += 1
+       }
+      time.text = "\(minutes):\(secodsString)"
+   }
     
 }
 
