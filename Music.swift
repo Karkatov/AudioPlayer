@@ -12,7 +12,7 @@ struct Music {
     let track: String
     
     static func allMusic() -> [Music] {
-        let allTracks = [Music(numberAlbum: "1", track: "Juice WRLD - From My Window"), Music(numberAlbum: "2", track: "Eгор Крид - Сhoppa"), Music(numberAlbum: "3", track: "Welcome to Brixton")]
+        let allTracks = [Music(numberAlbum: "0", track: "Juice WRLD - From My Window"), Music(numberAlbum: "1", track: "Eгор Крид - Сhoppa"), Music(numberAlbum: "2", track: "Welcome to Brixton")]
         return allTracks
     }
 }

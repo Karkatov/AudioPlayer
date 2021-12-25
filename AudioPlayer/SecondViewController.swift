@@ -38,11 +38,13 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print(indexOfSong)
         
         setProperties()
         
         setPlayer()
+        
+        playMusic()
     }
     
     func setProperties() {
@@ -132,7 +134,7 @@ class SecondViewController: UIViewController {
         songLabel.textAlignment = .center
         songLabel.textColor = .white
         
-        songLabel.text = traks[0]
+        songLabel.text = traks[indexOfSong]
         
         // slider - time tracker
         slider.frame = CGRect(x: 40,
@@ -168,8 +170,10 @@ class SecondViewController: UIViewController {
     // MARK: - Methods
     
     @objc func playMusic() {
+        
         imageView.image = UIImage(named: String(indexOfSong))
         imageView.layer.cornerRadius = 10
+        
         self.player.play()
         playMusicMode = "On"
         num += 1
@@ -223,15 +227,17 @@ class SecondViewController: UIViewController {
         
         self.player.volume = self.volumeSlider.value
     }
-        
+    
     
     func setPlayer() {
     do {
             if let audioPath = Bundle.main.path(forResource: traks[indexOfSong], ofType: "mp3") {
+                imageView.image = UIImage(named: "\(indexOfSong)")
                 
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
                 self.slider.maximumValue = Float(player.duration)
                 self.volumeSlider.maximumValue = Float(player.duration)
+                
             }
         } catch {
             print("ERRoR")
